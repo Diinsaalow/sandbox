@@ -14,8 +14,9 @@
 </head>
 
 <body>
-    <h1>Chater 6 Getting Data From the Client</h1>
-    <!-- University registration form  -->
+    <h1>Name: <strong>Ismail Abdifadil Isack</strong></h1>
+    <h1>Student ID: <strong>C1220027</strong></h1>
+    <h1>Class: <strong>CA226</strong></h1>
     <form action="" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Online registration Form:</legend>
@@ -23,23 +24,29 @@
             <fieldset>
                 <legend>Personal data:</legend>
                 <label>First name:</label>
-                <input type="text" name="fName" placeholder="magaca hore" value="<?php echo isset($_POST['fName']) ? htmlspecialchars($_POST['fName']) : '' ?>"> <br>
+                <input type="text" name="fName" placeholder="magaca hore"
+                    value="<?php echo isset($_POST['fName']) ? htmlspecialchars($_POST['fName']) : '' ?>"> <br>
 
                 <label>Last name:</label>
-                <input type="text" name="lName" placeholder="magaca danbe" value="<?php echo isset($_POST['lName']) ? htmlspecialchars($_POST['lName']) : '' ?>"> <br>
+                <input type="text" name="lName" placeholder="magaca danbe"
+                    value="<?php echo isset($_POST['lName']) ? htmlspecialchars($_POST['lName']) : '' ?>"> <br>
 
                 <label>Pin code:</label>
-                <input type="password" name="pinCode" value="<?php echo isset($_POST['pinCode']) ? htmlspecialchars($_POST['pinCode']) : '' ?>"> <br>
+                <input type="password" name="pinCode"
+                    value="<?php echo isset($_POST['pinCode']) ? htmlspecialchars($_POST['pinCode']) : '' ?>"> <br>
 
                 <label>Sex:</label>
-                <input type="radio" name="sex" value="lab" <?php if (isset($_POST['sex']) && $_POST['sex'] === 'lab')   echo 'checked'; ?>>Male
-                <input type="radio" name="sex" value="dedig" <?php if (isset($_POST['sex']) && $_POST['sex'] === 'dedig') echo 'checked'; ?>>Female
+                <input type="radio" name="sex" value="lab"
+                    <?php if (isset($_POST['sex']) && $_POST['sex'] === 'lab')   echo 'checked'; ?>>Male
+                <input type="radio" name="sex" value="dedig"
+                    <?php if (isset($_POST['sex']) && $_POST['sex'] === 'dedig') echo 'checked'; ?>>Female
             </fieldset>
 
             <fieldset>
                 <legend>Birth data:</legend>
                 <label>Date of birth:</label>
-                <input type="date" name="dob" value="<?php echo isset($_POST['dob']) ? htmlspecialchars($_POST['dob']) : '' ?>"> <br>
+                <input type="date" name="dob"
+                    value="<?php echo isset($_POST['dob']) ? htmlspecialchars($_POST['dob']) : '' ?>"> <br>
 
                 <label>Place of birth:</label>
                 <select name="pob">
@@ -79,17 +86,24 @@
             <fieldset>
                 <legend>Faculties:</legend>
                 <label>Faculties:</label>
-                <!-- keep same labels but ensure they all post to faculty[] -->
-                <input type="checkbox" name="faculty[]" value="computer sciece" <?php if (!empty($_POST['faculty']) && in_array('computer sciece', $_POST['faculty'])) echo 'checked'; ?>>Computer
-                <input type="checkbox" name="faculty[]" value="education" <?php if (!empty($_POST['faculty']) && in_array('education', $_POST['faculty'])) echo 'checked'; ?>>Waxbarshada
-                <input type="checkbox" name="faculty[]" value="economics & management" <?php if (!empty($_POST['faculty']) && in_array('economics & management', $_POST['faculty'])) echo 'checked'; ?>>Maamulka iyo Maaraynta
-                <input type="checkbox" name="faculty[]" value="sharia & law" <?php if (!empty($_POST['faculty']) && in_array('sharia & law', $_POST['faculty'])) echo 'checked'; ?>>الشريعة والقانون
-                <input type="checkbox" name="faculty[]" value="medicine" <?php if (!empty($_POST['faculty']) && in_array('medicine', $_POST['faculty'])) echo 'checked'; ?>>Daawaynta
+                <input type="checkbox" name="faculty[]" value="computer sciece"
+                    <?php if (!empty($_POST['faculty']) && in_array('computer sciece', $_POST['faculty'])) echo 'checked'; ?>>Computer
+                <input type="checkbox" name="faculty[]" value="education"
+                    <?php if (!empty($_POST['faculty']) && in_array('education', $_POST['faculty'])) echo 'checked'; ?>>Waxbarshada
+                <input type="checkbox" name="faculty[]" value="economics & management"
+                    <?php if (!empty($_POST['faculty']) && in_array('economics & management', $_POST['faculty'])) echo 'checked'; ?>>Maamulka
+                iyo Maaraynta
+                <input type="checkbox" name="faculty[]" value="sharia & law"
+                    <?php if (!empty($_POST['faculty']) && in_array('sharia & law', $_POST['faculty'])) echo 'checked'; ?>>الشريعة
+                والقانون
+                <input type="checkbox" name="faculty[]" value="medicine"
+                    <?php if (!empty($_POST['faculty']) && in_array('medicine', $_POST['faculty'])) echo 'checked'; ?>>Daawaynta
             </fieldset>
 
             <fieldset>
                 <legend>Comment:</legend>
-                <textarea name="comment" rows="4" cols="50"><?php echo isset($_POST['comment']) ? htmlspecialchars($_POST['comment']) : '' ?></textarea>
+                <textarea name="comment" rows="4"
+                    cols="50"><?php echo isset($_POST['comment']) ? htmlspecialchars($_POST['comment']) : '' ?></textarea>
             </fieldset>
 
             <label>Attach photo (only jpg, jpeg, or png):</label>
@@ -115,7 +129,6 @@
         else
             echo ("<br><b>Last name is required.</b>");
 
-        // Password
         if (!empty($_POST['pinCode']))
             echo ("<br>Your password is: " . $_POST['pinCode']);
         else
@@ -126,19 +139,17 @@
         else
             echo ("<br><b>Please select sex.</b>");
 
-        // Date of birth
         if (!empty($_POST['dob']))
             echo ("<br>Taariikhda dhalashada waa: " . $_POST['dob']);
         else
             echo ("<br><b>Date of birth is required.</b>");
 
-        // Place of birth
+    
         if (!empty($_POST['pob']))
             echo ("<br>Ku dhashtay: " . ucwords($_POST['pob']));
         else
             echo ("<br><b>Place of birth is required.</b>");
 
-        // Residence (multiple) — sort + join + add full stop
         if (!empty($_POST['residence']) && is_array($_POST['residence'])) {
             $res = array_map('ucwords', array_map('trim', $_POST['residence']));
             sort($res);
@@ -160,24 +171,23 @@
         else
             echo ("<br><b>Comment is required.</b>");
 
-        // ---- FILE UPLOADS (Photo + Multiple PDFs) ----
-        // Ensure destination exists 
+   
         $dest = __DIR__ . "/Documents/";
         if (!is_dir($dest)) {
             @mkdir($dest, 0777, true);
         }
 
-        // Single photo: only jpg/jpeg/png, must not already exist
         if (!empty($_FILES['photo']['name'])) {
             $photoName = $_FILES['photo']['name'];
             $photoTmp  = $_FILES['photo']['tmp_name'];
-            $photoSize = (int)$_FILES['photo']['size'];
+            $photoSize = $_FILES['photo']['size'];
             $photoExt  = strtolower(pathinfo($photoName, PATHINFO_EXTENSION));
             $allowedPhoto = array("jpg", "jpeg", "png");
 
+
             if (!in_array($photoExt, $allowedPhoto)) {
                 echo ("<br>File extension <b>$photoExt</b> is not allowed (photo must be jpg/jpeg/png).");
-            } elseif ($photoSize) {
+            } elseif ($photoSize > 2 * 1024 * 1024) {
                 echo ("<br>File: <b>$photoName</b> is too big (max 2MB) or invalid.");
             } else {
                 $target = $dest . basename($photoName);
@@ -193,7 +203,7 @@
             echo ("<br>Nothing selected (photo).");
         }
 
-        // Multiple docs[]: only pdf
+
         if (!empty($_FILES['docs']['name'][0])) {
             $names = $_FILES['docs']['name'];
             $tmps  = $_FILES['docs']['tmp_name'];
@@ -211,7 +221,7 @@
                     echo ("<br>File: <b>$docName</b> rejected (only pdf).");
                     continue;
                 }
-                if ($docSize) {
+                if ($docSize > 2 * 1024 * 1024) {
                     echo ("<br>File: <b>$docName</b> too big or invalid.");
                     continue;
                 }
